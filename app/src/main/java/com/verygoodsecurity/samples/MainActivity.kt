@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbarMain)
 
         fab.setOnClickListener { view ->
             // TODO send email to vgs
@@ -21,16 +21,14 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
 
-        piiSampleBtn.setOnClickListener {
-            startActivity(Intent(this, DataSendActivity::class.java))
-        }
+        piiSampleBtn.setOnClickListener { startActivity(newDataSendIntent(DataSendActivity.PII_ACTION)) }
+        ccSampleBtn.setOnClickListener { startActivity(newDataSendIntent(DataSendActivity.CC_ACTION)) }
+        bankSampleBtn.setOnClickListener { startActivity(newDataSendIntent(DataSendActivity.BANK_ACTION)) }
+    }
 
-        ccSampleBtn.setOnClickListener {
-            startActivity(Intent(this, DataSendActivity::class.java))
-        }
-
-        bankSampleBtn.setOnClickListener {
-            startActivity(Intent(this, DataSendActivity::class.java))
-        }
+    private fun newDataSendIntent(action: String): Intent {
+        val intent = Intent(this, DataSendActivity::class.java)
+        intent.action = action
+        return intent
     }
 }

@@ -3,4 +3,12 @@
     <string name="sample_1">PII</string>
     <string name="sample_2">Credit Card Data</string>
     <string name="sample_3">Bank Account Data</string>
+
+    <string name="name">Name</string>
+    <string name="ssn">Social Security Number</string>
+    <string name="dob">Date Of Birth</string>
+    <string name="cc">Credit Card Number</string>
+    <string name="cvv">CVV</string>
+    <string name="bank_account">Bank Account Number</string>
+    <string name="submit">Submit</string>
 </resources>
