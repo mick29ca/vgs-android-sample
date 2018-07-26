@@ -13,4 +13,18 @@
     <string name="cvv">CVV</string>
     <string name="bank_account">Bank Account Number</string>
     <string name="submit">Submit</string>
+    <string name="redacted_data">Redacted Data:</string>
+
+    <string name="piiName">Name:\n%1$s</string>
+    <string name="piiDob">Date Of Birth:\n%1$s</string>
+    <string name="piiSsn">Social Security Number:\n%1$s</string>
+    <string name="piiCc">Credit Card Number:\n%1$s</string>
+
+    <string name="bankName">Name:\n%1$s</string>
+    <string name="bankAccount">Bank Account:\n%1$s</string>
+    <string name="bankSsn">Social Security Number:\n%1$s</string>
+
+    <string name="cardName">Name:\n%1$s</string>
+    <string name="cardCc">Credit Card Number:\n%1$s</string>
+    <string name="cardCvv">CVV:\n%1$s</string>
 </resources>

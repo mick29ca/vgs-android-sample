@@ -6,10 +6,7 @@ import kotlinx.android.synthetic.main.activity_data_send.*
 import android.app.DatePickerDialog
 import android.widget.Button
 import android.widget.Toast
-import com.verygoodsecurity.samples.http.BankData
-import com.verygoodsecurity.samples.http.CardData
-import com.verygoodsecurity.samples.http.HttpbinService
-import com.verygoodsecurity.samples.http.PiiData
+import com.verygoodsecurity.samples.http.*
 import com.verygoodsecurity.samples.views.FourDigitCardFormatWatcher
 import kotlinx.android.synthetic.main.content_bank.*
 import kotlinx.android.synthetic.main.content_card.*
@@ -18,7 +15,6 @@ import java.util.*
 import java.text.SimpleDateFormat
 import retrofit2.Retrofit
 import kotlin.properties.Delegates
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -75,13 +71,20 @@ class DataSendActivity : AppCompatActivity() {
 
         editPiiCc.addTextChangedListener(FourDigitCardFormatWatcher())
 
-        setSubmitClickListener(btnPiiSubmit) {
+        setSubmitClickListener(btnPiiSubmit, {
             httpbinService.post(PiiData(
                     editPiiName.text.toString(),
                     editPiiDob.text.toString(),
                     editPiiSsn.text.toString(),
                     editPiiCc.text.toString()
             ))
+        }) {
+            textPiiRedactedData.text = getString(R.string.redacted_data)
+
+            textPiiName.text = getString(R.string.piiName, it.name)
+            textPiiDob.text = getString(R.string.piiDob, it.dob)
+            textPiiSsn.text = getString(R.string.piiSsn, it.ssn)
+            textPiiCc.text = getString(R.string.piiCc, it.cc)
         }
     }
 
@@ -90,36 +93,48 @@ class DataSendActivity : AppCompatActivity() {
 
         editCardCc.addTextChangedListener(FourDigitCardFormatWatcher())
 
-        setSubmitClickListener(btnCardSubmit) {
+        setSubmitClickListener(btnCardSubmit, {
             httpbinService.post(CardData(
                     editCardName.text.toString(),
                     editCardCc.text.toString(),
                     editCardCvv.text.toString()
             ))
+        }) {
+            textCardRedactedData.text = getString(R.string.redacted_data)
+
+            textCardName.text = getString(R.string.cardName, it.name)
+            textCardCc.text = getString(R.string.cardCc, it.cc)
+            textCardCvv.text = getString(R.string.cardCvv, it.cvv)
         }
     }
 
     private fun initBankViews() {
         contentStub.layoutInflater.inflate(R.layout.content_bank, contentContainer, true)
 
-        setSubmitClickListener(btnBankSubmit) {
+        setSubmitClickListener(btnBankSubmit, {
             httpbinService.post(BankData(
                     editBankName.text.toString(),
                     editBankAccount.text.toString(),
                     editBankSsn.text.toString()
             ))
+        }) {
+            textBankRedactedData.text = getString(R.string.redacted_data)
+
+            textBankName.text = getString(R.string.bankName, it.name)
+            textBankAccount.text = getString(R.string.bankAccount, it.bankAccount)
+            textBankSsn.text = getString(R.string.bankSsn, it.ssn)
         }
     }
 
-    private fun setSubmitClickListener(btn: Button, httpPost: () -> Call<ResponseBody>) {
+    private fun <T> setSubmitClickListener(btn: Button, httpPost: () -> Call<HttpbinResponse<T>>, printFunction: (T) -> Unit) {
         btn.setOnClickListener {
             httpPost.invoke()
-                    .enqueue(object : Callback<ResponseBody> {
-                        override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
-                            Toast.makeText(this@DataSendActivity, response.body()!!.string(), Toast.LENGTH_LONG).show()
+                    .enqueue(object : Callback<HttpbinResponse<T>> {
+                        override fun onResponse(call: Call<HttpbinResponse<T>>?, response: Response<HttpbinResponse<T>>) {
+                            printFunction.invoke(response.body()!!.json)
                         }
 
-                        override fun onFailure(call: Call<ResponseBody>, t: Throwable?) {
+                        override fun onFailure(call: Call<HttpbinResponse<T>>, t: Throwable?) {
                             Toast.makeText(this@DataSendActivity, "Unexpected Error", Toast.LENGTH_LONG).show()
                         }
                     })
