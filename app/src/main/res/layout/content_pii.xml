@@ -9,7 +9,7 @@
     tools:context=".DataSendActivity">
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/editPiiName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="20"
@@ -18,36 +18,36 @@
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/editDob"/>
+        app:layout_constraintBottom_toTopOf="@id/editPiiDob"/>
 
     <EditText
-        android:id="@+id/editDob"
+        android:id="@+id/editPiiDob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="date"
         android:focusable="false"
         android:hint="@string/dob"
         android:layout_margin="8dp"
-        app:layout_constraintBottom_toTopOf="@id/editSsn"
+        app:layout_constraintBottom_toTopOf="@id/editPiiSsn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/editName"/>
+        app:layout_constraintBottom_toBottomOf="@id/editPiiName"/>
 
     <EditText
-        android:id="@+id/editSsn"
+        android:id="@+id/editPiiSsn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:hint="@string/ssn"
         android:layout_margin="8dp"
         android:maxLength="10"
-        app:layout_constraintBottom_toTopOf="@id/editCc"
+        app:layout_constraintBottom_toTopOf="@id/editPiiCc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/editDob"/>
+        app:layout_constraintBottom_toBottomOf="@id/editPiiDob"/>
 
     <EditText
-        android:id="@+id/editCc"
+        android:id="@+id/editPiiCc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="phone"
@@ -55,18 +55,18 @@
         android:hint="@string/cc"
         android:layout_margin="8dp"
         android:maxLength="19"
-        app:layout_constraintBottom_toTopOf="@id/btnSubmit"
+        app:layout_constraintBottom_toTopOf="@id/btnPiiSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/editSsn"/>
+        app:layout_constraintBottom_toBottomOf="@id/editPiiSsn"/>
 
     <Button
-        android:id="@+id/btnSubmit"
+        android:id="@+id/btnPiiSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/editCc"/>
+        app:layout_constraintBottom_toBottomOf="@id/editPiiCc"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -4,6 +4,8 @@
     <string name="sample_2">Credit Card Data</string>
     <string name="sample_3">Bank Account Data</string>
 
+    <string name="vgs_proxy_url">https://tntd4qvjtaj.SANDBOX.verygoodproxy.com/</string>
+
     <string name="name">Name</string>
     <string name="ssn">Social Security Number</string>
     <string name="dob">Date Of Birth</string>

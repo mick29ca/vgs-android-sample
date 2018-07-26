@@ -9,7 +9,7 @@
     tools:context=".DataSendActivity">
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/editCardName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="20"
@@ -18,10 +18,10 @@
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/editCc"/>
+        app:layout_constraintBottom_toTopOf="@id/editCardCc"/>
 
     <EditText
-        android:id="@+id/editCc"
+        android:id="@+id/editCardCc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="phone"
@@ -29,33 +29,32 @@
         android:hint="@string/cc"
         android:layout_margin="8dp"
         android:maxLength="19"
-        app:layout_constraintBottom_toTopOf="@id/editCvv"
+        app:layout_constraintBottom_toTopOf="@id/editCardCvv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/editName"/>
+        app:layout_constraintBottom_toBottomOf="@id/editCardName"/>
 
 
     <EditText
-        android:id="@+id/editCvv"
+        android:id="@+id/editCardCvv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:hint="@string/cvv"
         android:layout_margin="8dp"
         android:maxLength="3"
-        app:layout_constraintBottom_toTopOf="@id/btnSubmit"
+        app:layout_constraintBottom_toTopOf="@id/btnCardSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/editCc"/>
-
+        app:layout_constraintBottom_toBottomOf="@id/editCardCc"/>
 
     <Button
-        android:id="@+id/btnSubmit"
+        android:id="@+id/btnCardSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/editCvv"/>
+        app:layout_constraintBottom_toBottomOf="@id/editCardCvv"/>
 
 </android.support.constraint.ConstraintLayout>

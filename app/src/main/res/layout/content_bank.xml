@@ -9,7 +9,7 @@
     tools:context=".DataSendActivity">
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/editBankName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="20"
@@ -27,32 +27,32 @@
         android:inputType="text"
         android:hint="@string/bank_account"
         android:layout_margin="8dp"
-        app:layout_constraintBottom_toTopOf="@id/editCc"
+        android:maxLength="50"
+        app:layout_constraintBottom_toTopOf="@id/editBankSsn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/editName"/>
+        app:layout_constraintBottom_toBottomOf="@id/editBankName"/>
 
     <EditText
-        android:id="@+id/editCc"
+        android:id="@+id/editBankSsn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:digits="0123456789 _"
-        android:hint="@string/cc"
+        android:inputType="numberSigned"
+        android:hint="@string/ssn"
         android:layout_margin="8dp"
-        android:maxLength="19"
-        app:layout_constraintBottom_toTopOf="@id/btnSubmit"
+        android:maxLength="10"
+        app:layout_constraintBottom_toTopOf="@id/btnBankSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/editSsn"/>
+        app:layout_constraintBottom_toBottomOf="@id/editBankAccount"/>
 
     <Button
-        android:id="@+id/btnSubmit"
+        android:id="@+id/btnBankSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/editCc"/>
+        app:layout_constraintBottom_toBottomOf="@id/editBankSsn"/>
 
 </android.support.constraint.ConstraintLayout>
