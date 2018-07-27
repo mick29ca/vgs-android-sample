@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_data_send.*
 import android.app.DatePickerDialog
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.Toast
 import com.verygoodsecurity.samples.http.*
@@ -128,14 +130,17 @@ class DataSendActivity : AppCompatActivity() {
 
     private fun <T> setSubmitClickListener(btn: Button, httpPost: () -> Call<HttpbinResponse<T>>, printFunction: (T) -> Unit) {
         btn.setOnClickListener {
+            progressBar.visibility = VISIBLE
             httpPost.invoke()
                     .enqueue(object : Callback<HttpbinResponse<T>> {
                         override fun onResponse(call: Call<HttpbinResponse<T>>?, response: Response<HttpbinResponse<T>>) {
                             printFunction.invoke(response.body()!!.json)
+                            progressBar.visibility = GONE
                         }
 
                         override fun onFailure(call: Call<HttpbinResponse<T>>, t: Throwable?) {
                             Toast.makeText(this@DataSendActivity, "Unexpected Error", Toast.LENGTH_LONG).show()
+                            progressBar.visibility = GONE
                         }
                     })
         }
