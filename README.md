@@ -45,7 +45,7 @@ Please note that CVV data should be configured to use `VOLATILE` storage due to 
 
 ## Usage
 
-To use the sample with your own vault change `vgs_proxy_url` in `strings.xml` file to the URL of your inbound route.
+To use the sample with your own vault change `vgs_proxy_url` in [strings.xml](https://github.com/verygoodsecurity/vgs-android-sample/blob/master/app/src/main/res/values/strings.xml#L7) file to the URL of your inbound route.
 This value can be found on dashboard in `Vault URLs`:
 
 <img src="images/vgs-inbound-url.png" width="512" alt="Inbound Route URL">
