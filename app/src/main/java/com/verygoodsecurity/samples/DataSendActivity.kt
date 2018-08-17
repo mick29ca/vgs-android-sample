@@ -42,7 +42,7 @@ class DataSendActivity : AppCompatActivity() {
                 .baseUrl(getString(R.string.vgs_proxy_url))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-        httpbinService = retrofit.create<HttpbinService>(HttpbinService::class.java)
+        httpbinService = retrofit.create(HttpbinService::class.java)
 
         when (intent.action) {
             PII_ACTION -> initPiiViews()
